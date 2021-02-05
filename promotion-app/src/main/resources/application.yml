@@ -1,0 +1,19 @@
+promotion:
+  base-path: promo
+
+server:
+  port: 8087
+  
+spring: 
+    data: 
+        mongodb: 
+            host: localhost 
+            port: 27017 
+            database: promo
+            
+logging:
+  level:
+    org:
+      springframework:
+        web: TRACE
+      hibernate: ERROR
