@@ -17,7 +17,7 @@ public class JacksonConfig {
 	  @Bean
 	  @Primary
 	  public ObjectMapper objectMapper(Jackson2ObjectMapperBuilder builder) {
-	    final ObjectMapper objectMapper = builder.createXmlMapper(createXmlMapper)XmlMapper(false).build();
+	    final ObjectMapper objectMapper = builder.createXmlMapper(false).build();
 	    objectMapper.registerModule(new JavaTimeModule());
 	    objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
 	    objectMapper.configure(MapperFeature.DEFAULT_VIEW_INCLUSION, false);

@@ -3,9 +3,6 @@ package se.aceone.web.promo.domain.model;
 import java.time.LocalDate;
 import java.util.List;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,19 +11,19 @@ public class Promotion {
 
 	@Id
 	private String id;
-	@NotNull
-	@NotEmpty
+//	@NotNull
+//	@NotEmpty
 	private String code;
-	@NotNull
+//	@NotNull
 	private LocalDate start;
-	@NotNull
+//	@NotNull
 	private LocalDate end;
-	@NotNull
+//	@NotNull
 	private Discount discount;
-	@NotNull
+//	@NotNull
 	private DiscountType type;
-	@NotNull
-	@NotEmpty
+//	@NotNull
+//	@NotEmpty
 	private List<String> businessUnit;
 	private boolean enabled;
 
