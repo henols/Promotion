@@ -1,29 +1,12 @@
 package se.aceone.web.promo;
 
-import java.time.LocalDate;
-import java.util.Arrays;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import se.aceone.web.promo.domain.model.AmountDiscount;
-import se.aceone.web.promo.domain.model.DiscountType;
-import se.aceone.web.promo.domain.model.PercentageDiscount;
-import se.aceone.web.promo.domain.model.Promotion;
-import se.aceone.web.promo.domain.model.PromotionResp;
-import se.aceone.web.promo.repository.PromotionRepository;
-import se.aceone.web.promo.service.PromotionService;
-
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-	@Autowired
-	PromotionRepository repository;
-	
-	@Autowired
-	PromotionService service;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);

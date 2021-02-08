@@ -26,11 +26,10 @@ import se.aceone.web.promo.domain.model.PromotonState;
 import se.aceone.web.promo.exception.ObjectNotFoundException;
 import se.aceone.web.promo.repository.DiscountLogRepository;
 import se.aceone.web.promo.repository.PromotionRepository;
-import se.aceone.web.promo.service.PromotionService;
 
 @RestController
 @RequestMapping("${promotion.base-path}")
-public class PromotionRestControler implements PromotionService {
+public class PromotionRestControler {
 
 	@Autowired
 	private PromotionRepository repository;
@@ -46,7 +45,6 @@ public class PromotionRestControler implements PromotionService {
 //		throw new RuntimeException("Promotion with id: " + promotionId + " not found.");
 //	}
 
-	@Override
 	@ApiOperation(value = "Validates a promotion", notes = "A service to validate if a promotion exists and are active.")
 	@GetMapping(path = "validate", produces = APPLICATION_JSON_VALUE)
 	public PromotionResp validatePromotion(@RequestParam @ApiParam(value = "Promotion code") String code,
@@ -71,7 +69,6 @@ public class PromotionRestControler implements PromotionService {
 		return resp;
 	}
 
-	@Override
 	@ApiOperation(value = "Confirms a promotion", notes = "A service to confirm the use of a promotion.")
 	@GetMapping(path = "confirm", produces = APPLICATION_JSON_VALUE)
 	public PromotionResp comfirmPromotion(@RequestParam @ApiParam(value = "Promotion code") String code,
@@ -111,27 +108,23 @@ public class PromotionRestControler implements PromotionService {
 		return resp;
 	}
 
-	@Override
 	@GetMapping(path = "promotions", produces = APPLICATION_JSON_VALUE)
 	public List<Promotion> all() {
 		return repository.findAll();
 	}
 
-	@Override
 	@ApiOperation(value = "Creates a new promotion")
 	@PostMapping(path = "promotions", produces = APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
 	public Promotion create(@RequestBody Promotion promotion) {
 		return repository.save(promotion);
 	}
 
-	@Override
 	@ApiOperation(value = "Get a promotion by promotion id")
 	@GetMapping("promotion/{id}")
 	public Promotion one(@PathVariable @ApiParam(value = "Promotion id") String id) {
 		return repository.findById(id).orElseThrow(() -> new ObjectNotFoundException(id));
 	}
 
-	@Override
 	@PutMapping(path = "promotion/{id}", consumes = APPLICATION_JSON_VALUE)
 	public Promotion update(@RequestBody Promotion promotion,
 			@PathVariable @ApiParam(value = "Promotion id") String id) {
@@ -150,7 +143,6 @@ public class PromotionRestControler implements PromotionService {
 		});
 	}
 
-	@Override
 	@DeleteMapping("promotion/{id}")
 	public void delete(@PathVariable @ApiParam(value = "Promotion id") String id) {
 		repository.deleteById(id);
